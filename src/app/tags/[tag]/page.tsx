@@ -23,11 +23,18 @@ export default async function TagPage({ params }: { params: { tag: string } }) {
     );
 
     return (
-        <div className="max-w-4xl mx-auto">
-            <Link href="/blog" className="text-blue-600 hover:underline mb-4 block">
-                &larr; Back to Blog
-            </Link>
-            <h1 className="text-4xl font-bold mb-8 capitalize">Tag: {decodedTag}</h1>
+        <div className="grid grid-cols-12 gap-8" data-testid="tag-page">
+            <div className="col-span-12 text-center mb-8">
+                <Link href="/blog" className="text-blue-600 hover:underline mb-4 inline-block" data-testid="back-to-blog">
+                    &larr; Back to Blog
+                </Link>
+                <h1 className="text-4xl font-bold mb-4" data-testid="tag-title">
+                    Posts tagged with <span className="text-blue-600">#{tag}</span>
+                </h1>
+                <p className="text-gray-600 dark:text-gray-400" data-testid="tag-count">
+                    Found {filteredPosts.length} post{filteredPosts.length === 1 ? '' : 's'}
+                </p>
+            </div>
             <div className="col-span-12">
                 <FilteredPostList initialPosts={filteredPosts} />
             </div>

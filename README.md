@@ -52,6 +52,14 @@ npm run build
 npm start
 ```
 
+## Testing
+
+Run the test suite with:
+
+```bash
+npm test
+```
+
 ## Docker
 
 Build and run using Docker Compose:

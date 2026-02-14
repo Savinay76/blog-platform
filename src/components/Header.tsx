@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ActiveLink from '@/components/ActiveLink';
 
 export default function Header() {
     return (
@@ -8,15 +9,15 @@ export default function Header() {
                     My Awesome <span className="text-blue-600">Blog</span>
                 </Link>
                 <nav className="flex gap-6" data-testid="site-nav">
-                    <Link href="/" className="hover:text-blue-600 transition-colors" data-testid="nav-home">
+                    <ActiveLink href="/" className="hover:text-blue-600 transition-colors" data-testid="nav-home">
                         Home
-                    </Link>
-                    <Link href="/blog" className="hover:text-blue-600 transition-colors" data-testid="nav-blog">
+                    </ActiveLink>
+                    <ActiveLink href="/blog" className="hover:text-blue-600 transition-colors" data-testid="nav-blog">
                         Blog
-                    </Link>
-                    <Link href="/about" className="hover:text-blue-600 transition-colors" data-testid="nav-about">
+                    </ActiveLink>
+                    <ActiveLink href="/about" className="hover:text-blue-600 transition-colors" data-testid="nav-about">
                         About
-                    </Link>
+                    </ActiveLink>
                 </nav>
             </div>
         </header>

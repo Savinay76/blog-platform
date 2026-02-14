@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getSortedPostsData } from '@/lib/posts';
+import PostCard from '@/components/PostCard';
 
 export default function Home() {
     const allPosts = getSortedPostsData();
@@ -41,30 +42,8 @@ export default function Home() {
                     </Link>
                 </div>
                 <div className="grid md:grid-cols-3 gap-6" data-testid="recent-posts-grid">
-                    {recentPosts.map(({ slug, date, title, tags, readingTime }) => (
-                        <Link
-                            key={slug}
-                            href={`/blog/${slug}`}
-                            className="block p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
-                            data-testid={`post-card-${slug}`}
-                        >
-                            <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-2">
-                                <time>{date}</time>
-                                <span>•</span>
-                                <span>{readingTime}</span>
-                            </div>
-                            <h3 className="text-xl font-semibold mb-2">{title}</h3>
-                            <div className="flex gap-2 mb-2">
-                                {tags && tags.map((tag: string) => (
-                                    <span key={tag} className="text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-2 py-1 rounded-full">
-                                        #{tag}
-                                    </span>
-                                ))}
-                            </div>
-                            <p className="text-gray-600 dark:text-gray-300">
-                                Click to read more...
-                            </p>
-                        </Link>
+                    {recentPosts.map((post) => (
+                        <PostCard key={post.slug} post={post} />
                     ))}
                 </div>
             </section>

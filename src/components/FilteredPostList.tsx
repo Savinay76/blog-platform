@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { PostData } from '@/lib/types';
+import PostCard from '@/components/PostCard';
 
 interface FilteredPostListProps {
     initialPosts: PostData[];
@@ -61,35 +62,8 @@ export default function FilteredPostList({ initialPosts }: FilteredPostListProps
                 {!currentPosts.length && (
                     <p className="text-gray-600 dark:text-gray-400" data-testid="no-posts-message">No posts found.</p>
                 )}
-                {currentPosts.map(({ slug, date, title, tags, readingTime }) => (
-                    <article
-                        key={slug}
-                        className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
-                        data-testid={`post-item-${slug}`}
-                    >
-                        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-2">
-                            <time>{date}</time>
-                            <span>•</span>
-                            <span>{readingTime}</span>
-                        </div>
-                        <Link
-                            href={`/blog/${slug}`}
-                            className="text-2xl font-bold hover:text-blue-600 transition-colors"
-                            data-testid={`post-link-${slug}`}
-                        >
-                            {title}
-                        </Link>
-                        <div className="flex gap-2 mt-2">
-                            {tags && tags.map((tag: string) => (
-                                <Link href={`/tags/${tag}`} key={tag} className="text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-2 py-1 rounded-full hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors" data-testid={`tag-link-${tag}`}>
-                                    #{tag}
-                                </Link>
-                            ))}
-                        </div>
-                        <p className="mt-4 text-gray-600 dark:text-gray-300">
-                            Read more...
-                        </p>
-                    </article>
+                {currentPosts.map((post) => (
+                    <PostCard key={post.slug} post={post} />
                 ))}
             </div>
 

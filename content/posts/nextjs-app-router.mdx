@@ -1,0 +1,25 @@
+---
+title: 'Exploring Next.js 14 App Router'
+date: '2023-11-01'
+tags: ['nextjs', 'react', 'web-development']
+---
+
+# Exploring Next.js 14 App Router
+
+The **App Router** in Next.js 14 introduces a new paradigm for building applications using React Server Components.
+
+## Key Features
+
+1.  **Server Components**: Fetch data directly in your components.
+2.  **Streaming**: Send UI to the client as soon as it's ready.
+3.  **Layouts**: Share UI between routes.
+
+```tsx
+// app/page.tsx
+export default async function Page() {
+  const data = await getData()
+  return <main>{data}</main>
+}
+```
+
+This makes building performant apps easier than ever.

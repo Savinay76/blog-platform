@@ -1,0 +1,9 @@
+export default function Footer() {
+    return (
+        <footer className="bg-gray-50 border-t border-gray-200 dark:bg-gray-900 dark:border-gray-800 py-8">
+            <div className="container mx-auto px-4 text-center text-gray-500">
+                <p>&copy; {new Date().getFullYear()} My Awesome Blog. All rights reserved.</p>
+            </div>
+        </footer>
+    );
+}

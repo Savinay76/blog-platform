@@ -1,0 +1,29 @@
+---
+title: 'Understanding React Hooks'
+date: '2023-11-15'
+tags: ['react', 'javascript', 'hooks']
+---
+
+# Understanding React Hooks
+
+Hooks allow you to use state and other React features without writing a class.
+
+## Common Hooks
+
+-   `useState`: Manage local state.
+-   `useEffect`: Handle side effects.
+-   `useContext`: Access context API.
+
+```javascript
+import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      Count: {count}
+    </button>
+  );
+}
+```

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { PostData } from '@/lib/types';
 import Search from '@/components/Search';
+import PostCard from '@/components/PostCard';
 
 interface FilteredPostListProps {
     initialPosts: PostData[];

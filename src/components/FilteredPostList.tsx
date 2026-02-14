@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { PostData } from '@/lib/types';
-import PostCard from '@/components/PostCard';
+import Search from '@/components/Search';
 
 interface FilteredPostListProps {
     initialPosts: PostData[];
@@ -24,8 +24,8 @@ export default function FilteredPostList({ initialPosts }: FilteredPostListProps
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
-    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(e.target.value);
+    const setSearchTerm = (value: string) => {
+        setSearchValue(value);
         setCurrentPage(1); // Reset to first page on search
     };
 
@@ -33,30 +33,7 @@ export default function FilteredPostList({ initialPosts }: FilteredPostListProps
 
     return (
         <div data-testid="filtered-post-list">
-            <div className="mb-12 relative">
-                <input
-                    aria-label="Search articles"
-                    type="text"
-                    onChange={handleSearchChange}
-                    placeholder="Search articles in blog..."
-                    className="block w-full px-4 py-3 text-gray-900 bg-white border border-gray-200 rounded-md dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
-                    data-testid="search-input"
-                />
-                <svg
-                    className="absolute right-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-300"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                </svg>
-            </div>
+            <Search value={searchValue} onChange={setSearchTerm} />
 
             <div className="space-y-8" data-testid="post-list">
                 {!currentPosts.length && (

@@ -4,6 +4,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Container from '@/components/Container';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -32,8 +33,10 @@ export default function RootLayout({
                 data-testid="body-root"
             >
                 <Header />
-                <main className="flex-grow container mx-auto px-4 py-8" data-testid="main-content">
-                    {children}
+                <main className="flex-grow py-8" data-testid="main-content">
+                    <Container>
+                        {children}
+                    </Container>
                 </main>
                 <Footer />
                 <GoogleAnalytics gaId="G-XYZ1234567" />
